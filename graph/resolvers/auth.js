@@ -51,10 +51,6 @@ const Query = {
 
 const Mutation = {
   addUser: async (_, { user: { email, password } }, { user: authUser }) => {
-    if (!authUser) {
-      throw new Error('Unauthenticated');
-    }
-
     const existingUser = await User.findOne({ email });
 
     if (existingUser) {

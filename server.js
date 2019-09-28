@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const { ApolloServer } = require('apollo-server-express');
 const mongoose = require('mongoose');
+const cors = require('cors');
 
 const typeDefs = require('./graph/schema');
 const resolvers = require('./graph/resolvers');
@@ -9,6 +10,7 @@ const mapContext = require('./utils/mapContext');
 
 const app = express();
 
+app.use(cors());
 app.use(bodyParser.json());
 
 mongoose
